@@ -6,8 +6,12 @@ brew install docker-machine
 brew cask install virtualbox
 docker-machine create --driver virtualbox --tls-san boot2docker default
 docker-machine start default
-temp=$(docker-machine env default | grep DOCKER_HOST)
-temp=${temp//export DOCKER_HOST=\"tcp\:\/\//}
-ip_address=${temp//\:2376\"/}
-sudo -- sh -c -e "echo '${ip_address}   boot2docker' >> /etc/hosts"
+grep -q boot2docker /etc/hosts
+if [ $? -ne 0 ]
+then
+  temp=$(docker-machine env default | grep DOCKER_HOST)
+  temp=${temp//export DOCKER_HOST=\"tcp\:\/\//}
+  ip_address=${temp//\:2376\"/}
+  sudo -- sh -c -e "echo '${ip_address}   boot2docker' >> /etc/hosts"
+fi
 eval "$(docker-machine env default)"
