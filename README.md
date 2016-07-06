@@ -8,4 +8,3 @@ This repository contains the code related to infrastructure
 **** Mac
 - Clone infra repository 'git clone git@git.thoughtworks.net:beruni/infra.git'
 - Run script 'sh base_setup_mac.sh'
-- Run command 'ansible-playbook -i inventory devbox.yml'

@@ -14,4 +14,6 @@ then
   ip_address=${temp//\:2376\"/}
   sudo -- sh -c -e "echo '${ip_address}   boot2docker' >> /etc/hosts"
 fi
+
 eval "$(docker-machine env default)"
+ansible-playbook devbox.yml -i inventory
