@@ -3,6 +3,7 @@
 brew tap caskroom/cask
 brew install docker
 brew install docker-machine
+brew install node
 brew cask install virtualbox
 docker-machine create --driver virtualbox --tls-san boot2docker default
 docker-machine start default

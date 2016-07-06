@@ -1,0 +1,10 @@
+- name: setup {{ node_server['name'] }} node server
+  docker: 
+    name: "{{ node_server['name'] }}"
+    docker_url: "{{ docker_host_url }}"
+    image: node
+    ports: "{{ node_server['port'] }}:8000"
+    state: started
+    volumes:
+      - "{{ node_server['app_path'] }}:/apps/{{ node_server['name'] }}"
+    command: "/bin/bash -c \"ls -la /apps/{{ node_server['name'] }} && cd /apps/{{ node_server['name'] }} && npm start\""

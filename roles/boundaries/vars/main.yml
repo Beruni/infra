@@ -1,0 +1,3 @@
+boundaries:
+  mongo_port: 2000
+  node_server_port: 2001

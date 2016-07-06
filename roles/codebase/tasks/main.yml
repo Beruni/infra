@@ -1,0 +1,25 @@
+- name: stash repo changes
+  cmd: "cd ../{{ item }} && git stash"
+  with_items:
+    - boundary_file_service
+    - web
+    - user_service
+
+- name: fetch git repos
+  git: repo=git@git.thoughtworks.net:beruni/{{ item }}.git dest=../{{ item }}
+  with_items:
+    - boundary_file_service
+    - web
+    - user_service
+
+- name: npm install
+  shell: "cd ../{{ item }} && npm install"
+  with_items:
+    - boundary_file_service
+    - web
+
+- name: npm clean build
+  shell: "cd ../{{ item }} && npm run build"
+  with_items:
+    - boundary_file_service
+    - web

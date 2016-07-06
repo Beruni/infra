@@ -1,8 +1,5 @@
 ---
 - hosts: devbox
-  tasks:
-    - git: repo=git@git.thoughtworks.net:beruni/user_service.git dest=../user_service
-    - git: repo=git@git.thoughtworks.net:beruni/boundary_file_service.git dest=../boundary_file_service
-    - git: repo=git@git.thoughtworks.net:beruni/web.git dest=../web
   roles:
-    - mongo
+    - codebase
+    - boundaries
