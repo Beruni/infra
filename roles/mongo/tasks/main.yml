@@ -1,0 +1,5 @@
+- name: setup mongo
+  docker: 
+    image: mongo
+    docker_url: "{{ docker_host_url }}"
+    state: started

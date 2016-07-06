@@ -1,0 +1,2 @@
+[devbox]
+localhost ansible_connection=local docker_host_url=tcp://boot2docker:2376
