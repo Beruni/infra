@@ -1,6 +1,4 @@
 ---
 - hosts: devbox
   roles:
-    - codebase
-    - node_build
     - dev_applications

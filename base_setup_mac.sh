@@ -6,6 +6,8 @@ brew install docker-machine
 brew install node
 brew cask install virtualbox
 docker-machine create --driver virtualbox --tls-san boot2docker default
+docker-machine stop default
+VBoxManage modifyvm default --natpf1 http_alt,tcp,0.0.0.0,8080,0.0.0.0,8080
 docker-machine start default
 grep -q boot2docker /etc/hosts
 if [ $? -ne 0 ]

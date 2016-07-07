@@ -3,8 +3,8 @@
     name: "{{ node_server['name'] }}"
     docker_url: "{{ docker_host_url }}"
     image: node
-    expose: 
-      - "{{ node_server['port'] }}"
+    ports: "{{ node_server['port'] }}:{{ node_server['port'] }}"
+    expose: "{{ node_server['port'] }}"
     state: reloaded
     volumes:
       - "{{ playbook_dir }}/../{{ node_server['name'] }}:/apps/{{ node_server['name'] }}"

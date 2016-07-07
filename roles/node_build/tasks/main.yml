@@ -1,0 +1,11 @@
+- name: npm install
+  shell: "cd ../{{ item }} && npm install"
+  with_items:
+    - boundary_file_service
+    - web
+
+- name: npm clean build
+  shell: "cd ../{{ item }} && npm run build"
+  with_items:
+    - boundary_file_service
+    - web
