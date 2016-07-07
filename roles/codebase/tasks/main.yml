@@ -1,5 +1,7 @@
 - name: stash repo changes
   shell: "cd ../{{ item }} && git stash"
+  changed_when: "command_result.stdout != 'No local changes to save'"
+  register: command_result
   with_items:
     - boundary_file_service
     - web

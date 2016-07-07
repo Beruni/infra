@@ -7,5 +7,4 @@ dependencies:
   - role: node_server
     node_server:
       port: "{{ boundaries['node_server_port'] }}"
-      name: "boundary_node_server"
-      app_path: "{{ playbook_dir }}/../boundary_file_service"
+      name: "boundary_file_service"

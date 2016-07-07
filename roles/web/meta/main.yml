@@ -1,0 +1,6 @@
+---
+dependencies:
+  - role: node_server
+    node_server:
+      port: "{{ web['node_server_port'] }}"
+      name: "web"

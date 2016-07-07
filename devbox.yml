@@ -3,3 +3,4 @@
   roles:
     - codebase
     - boundaries
+    - web

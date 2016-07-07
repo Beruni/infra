@@ -3,8 +3,9 @@
     name: "{{ node_server['name'] }}"
     docker_url: "{{ docker_host_url }}"
     image: node
-    ports: "{{ node_server['port'] }}:8000"
-    state: started
+    expose: 
+      - "{{ node_server['port'] }}"
+    state: reloaded
     volumes:
-      - "{{ node_server['app_path'] }}:/apps/{{ node_server['name'] }}"
+      - "{{ playbook_dir }}/../{{ node_server['name'] }}:/apps/{{ node_server['name'] }}"
     command: "/bin/bash -c \"ls -la /apps/{{ node_server['name'] }} && cd /apps/{{ node_server['name'] }} && npm start\""
