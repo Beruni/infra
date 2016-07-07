@@ -1,5 +1,5 @@
 - name: stash repo changes
-  shell: "cd ../{{ item }} && git stash"
+  shell: "if -z [ ../{{ item }} ]; then cd ../{{ item }} && git stash; fi"
   changed_when: "command_result.stdout != 'No local changes to save'"
   register: command_result
   with_items:
