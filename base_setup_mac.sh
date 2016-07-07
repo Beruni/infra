@@ -7,13 +7,23 @@ brew install node
 brew install ansible
 brew cask install virtualbox
 docker-machine create --driver virtualbox --tls-san boot2docker default
-docker-machine stop default
-VBoxManage modifyvm default --natpf1 http_alt,tcp,0.0.0.0,8080,0.0.0.0,8080
-docker-machine start default
+
+VBoxManage showvminfo default | grep -q "NIC 1 Rule(0):   name = http_alt"
+if [ $? -ne 0 ]
+then
+  docker-machine stop default
+  VBoxManage modifyvm default --natpf1 http_alt,tcp,0.0.0.0,8080,0.0.0.0,8080
+  docker-machine start default
+fi
+
 grep -q boot2docker /etc/hosts
 if [ $? -ne 0 ]
 then
   temp=$(docker-machine env default | grep DOCKER_HOST)
+  if [ $? -ne 0 ]
+  then
+    exit
+  fi
   temp=${temp//export DOCKER_HOST=\"tcp\:\/\//}
   ip_address=${temp//\:2376\"/}
   sudo -- sh -c -e "echo '${ip_address}   boot2docker' >> /etc/hosts"
