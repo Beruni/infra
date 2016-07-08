@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>EnvironmentVariables</key>
+    <dict>
+           <key>NODE_ENV</key>
+           <string>production</string>
+           <key>SMTP_HOST</key>
+           <string>smtp.gmail.com</string>
+           <key>SMTP_PORT</key>
+           <string>587</string>
+           <key>SMTP_SECURE</key>
+           <string>SSL</string>
+           <key>SMTP_USER</key>
+           <string>beruni.tw@gmail.com</string>
+           <key>SMTP_PASS</key>
+           <string>!abcd1234</string>
+           <key>SMTP_FROM</key>
+           <string>Beruni Strider noreply@gmail.com</string>
+           <key>PATH</key>
+           <string>/usr/local/bin:/usr/bin</string>
+    </dict>
+  </key>
+  <key>Label</key>
+  <string>strider.app</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/local/bin/npm</string>
+    <string>start</string>
+  </array>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <false/>
+  <key>WorkingDirectory</key>
+  <string>/Users/footballpools/strider</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/footballpools/strider/output.log</string>
+  <key>StandardOutPath</key>
+  <string>/Users/footballpools/strider/output.log</string>
+  <key>HardResourceLimits</key>
+  <dict>
+    <key>NumberOfFiles</key>
+    <integer>4096</integer>
+  </dict>
+  <key>SoftResourceLimits</key>
+  <dict>
+    <key>NumberOfFiles</key>
+    <integer>4096</integer>
+  </dict>
+</dict>
+</plist>

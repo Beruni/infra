@@ -1,5 +1,5 @@
 - name: setup mongo
-  docker: 
+  docker:
     image: mongo
     docker_url: "{{ docker_host_url }}"
     ports: "{{ mongo['port'] }}:27017"
