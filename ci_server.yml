@@ -1,6 +1,6 @@
 ---
 - hosts: ci_server
-  tasks:
+  pre_tasks:
     - name: check homebrew
       stat: path=/usr/local/bin/brew
       register: brew_present
@@ -9,15 +9,11 @@
       when: brew_present == false
     - homebrew: name={{ item }} state=present
       with_items:
-        - node
         - mongo
     - name: Start services at login
       file: src=/usr/local/opt/mongodb/homebrew.mxcl.mongodb.plist path=~/Library/LaunchAgents/homebrew.mxcl.mongo.plist state=link force=yes
     - name: Setup launch agents for services
       command: launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mongo.plist
-    - git: repo=https://github.com/Strider-CD/strider.git dest=~/strider
-    - name : npm install
-      command: "cd ~/strider && npm install"
-    - copy: src=strider.app.plist dest=~/Library/LaunchAgents/strider.app.plist force=yes
-    - name: Setup launch agents for strider
-      command: launchctl load ~/Library/LaunchAgents/strider.app.plist
+  roles:
+    - nodejs
+    - ci_server

@@ -1,0 +1,10 @@
+
+- git: repo=https://github.com/Strider-CD/strider.git dest=~/strider
+- name : npm install
+  command: "cd ~/strider && npm install"
+- copy: src=files/strider.app.plist dest=~/Library/LaunchAgents/strider.app.plist force=yes
+- copy: src=files/server.sh dest=~/strider/server.sh force=yes mode=755
+- name: Stop strider server
+  command: launchctl unload ~/Library/LaunchAgents/strider.app.plist
+- name: Start strider server
+  command: launchctl load ~/Library/LaunchAgents/strider.app.plist

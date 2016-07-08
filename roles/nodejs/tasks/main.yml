@@ -1,0 +1,8 @@
+- get_url: url='https://raw.githubusercontent.com/creationix/nvm/v0.31.2/install.sh' dest=/tmp/install_nvm.sh
+- file: path=~/.bash_profile state=file
+- command: 'bash /tmp/install_nvm.sh'
+- command: 'bash -lc "nvm current"'
+  register: node_installed_version
+- command: 'bash -lc "nvm install v{{ node_version }}"'
+  when: node_installed_version.stdout != 'v{{ node_version }}'
+- file: path=/tmp/install_nvm.sh state=absent
