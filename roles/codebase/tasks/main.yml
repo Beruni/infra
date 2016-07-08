@@ -1,15 +1,19 @@
-- name: stash repo changes
-  shell: "if -z [ ../{{ item }} ]; then cd ../{{ item }} && git stash; fi"
-  changed_when: "command_result.stdout != 'No local changes to save'"
-  register: command_result
+- name: check directory existence
+  stat: path="../{{ item }}"
+  register: presence_result
   with_items:
     - boundary_file_service
     - web
     - user_service
 
+- name: stash repo changes
+  shell: "cd {{ item.stat.path }} && git stash"
+  changed_when: "stash_result.stdout != 'No local changes to save'"
+  register: stash_result
+  with_items: "{{ presence_result.results }}"
+  when: item.stat.isdir
+
 - name: fetch git repos
-  git: repo=git@git.thoughtworks.net:beruni/{{ item }}.git dest=../{{ item }}
-  with_items:
-    - boundary_file_service
-    - web
-    - user_service
+  git: repo=git@git.thoughtworks.net:beruni/{{ item.item }}.git dest={{ item.stat.path }}
+  with_items: "{{ presence_result.results }}"
+  when: item.stat.isdir

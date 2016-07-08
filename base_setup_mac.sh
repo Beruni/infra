@@ -3,10 +3,6 @@
 brew tap caskroom/cask
 brew install docker
 brew install docker-machine
-#node
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.2/install.sh | bash
-source ~/.bash_profile
-nvm install v6.2.2
 brew install ansible
 brew cask install virtualbox
 docker-machine create --driver virtualbox --tls-san boot2docker default

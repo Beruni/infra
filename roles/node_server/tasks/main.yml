@@ -2,7 +2,7 @@
   docker: 
     name: "{{ node_server['name'] }}"
     docker_url: "{{ docker_host_url }}"
-    image: node
+    image: node:{{ node_version }}
     ports: "{{ node_server['port'] }}:{{ node_server['port'] }}"
     expose: "{{ node_server['port'] }}"
     state: reloaded

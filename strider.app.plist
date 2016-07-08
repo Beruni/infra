@@ -18,16 +18,14 @@
            <string>!abcd1234</string>
            <key>SMTP_FROM</key>
            <string>Beruni Strider noreply@gmail.com</string>
-           <key>PATH</key>
-           <string>/usr/local/bin:/usr/bin</string>
     </dict>
   </key>
   <key>Label</key>
   <string>strider.app</string>
   <key>ProgramArguments</key>
   <array>
-    <string>/usr/local/bin/npm</string>
-    <string>start</string>
+    <string>/usr/local/bin/node</string>
+    <string>bin/strider</string>
   </array>
   <key>RunAtLoad</key>
   <true/>
