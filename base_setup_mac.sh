@@ -13,8 +13,8 @@ if [ $? -ne 0 ]
 then
   docker-machine stop default
   VBoxManage modifyvm default --natpf1 http_alt,tcp,0.0.0.0,8080,0.0.0.0,8080
-  docker-machine start default
 fi
+docker-machine start default
 
 grep -q boot2docker /etc/hosts
 if [ $? -ne 0 ]
