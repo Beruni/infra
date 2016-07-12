@@ -3,9 +3,11 @@
   with_items:
     - boundary_file_service
     - web
+    - user_service
 
 - name: npm clean build
   shell: "cd ../{{ item }} && npm run build"
   with_items:
     - boundary_file_service
     - web
+    - user_service
