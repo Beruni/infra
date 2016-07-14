@@ -4,3 +4,4 @@ dependencies:
     node_server:
       port: "{{ web['node_server_port'] }}"
       name: "web"
+      mongo_port: 0

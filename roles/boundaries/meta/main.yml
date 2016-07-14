@@ -7,4 +7,5 @@ dependencies:
   - role: node_server
     node_server:
       port: "{{ boundaries['node_server_port'] }}"
+      mongo_port: "{{ boundaries['mongo_port'] }}"
       name: "boundary_file_service"
