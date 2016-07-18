@@ -1,9 +1,11 @@
 ---
 dependencies:
-  - role: users
-  - role: boundaries
-  - role: web
   - role: consul
     consul:
       name: dev_consul
-      web_port: 8400
+      web_port: 8500
+      dns_port: 53
+      url: consul://172.17.0.1:8500
+  - role: users
+  - role: boundaries
+  - role: web

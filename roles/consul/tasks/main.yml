@@ -1,8 +1,21 @@
 - name: setup consul server
   docker: 
-    name: "{{ consul['name'] }}"
+    name: "{{ consul['name'] }}_main"
     docker_url: "{{ docker_host_url }}"
     image: consul
-    ports: 
-      - "{{ consul['web_port'] }}:{{ consul['web_port'] }}"
     state: started
+    ports:
+      - "{{ consul['web_port'] }}:8500"
+      - 8400:8400
+      - "{{ consul['dns_port'] }}:8600/tcp"
+      - "{{ consul['dns_port'] }}:8600/udp"
+    command: agent -client 0.0.0.0 -server -bootstrap -ui
+- name: Pull and run registrator container
+  docker:
+    name: "{{ consul['name'] }}_registrator"
+    docker_url: "{{ docker_host_url }}"
+    net: host
+    image: gliderlabs/registrator:latest
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock
+    command: "-ip boot2docker {{ consul['url'] }}"
