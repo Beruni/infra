@@ -3,3 +3,7 @@ dependencies:
   - role: users
   - role: boundaries
   - role: web
+  - role: consul
+    consul:
+      name: dev_consul
+      web_port: 8400

@@ -1,0 +1,8 @@
+- name: setup consul server
+  docker: 
+    name: "{{ consul['name'] }}"
+    docker_url: "{{ docker_host_url }}"
+    image: consul
+    ports: 
+      - "{{ consul['web_port'] }}:{{ consul['web_port'] }}"
+    state: started

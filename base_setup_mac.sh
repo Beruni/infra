@@ -27,6 +27,11 @@ then
   ip_address=${temp//\:2376\"/}
   sudo -- sh -c -e "echo '${ip_address}   boot2docker' >> /etc/hosts"
 fi
+grep -q berunici /etc/hosts
+if [ $? -ne 0 ]
+then
+  sudo -- sh -c -e "echo '10.133.23.136    berunici' >> /etc/hosts"
+fi
 
 eval "$(docker-machine env default)"
 ansible-playbook devbox.yml -i inventory
