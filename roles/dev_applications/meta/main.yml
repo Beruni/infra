@@ -3,9 +3,7 @@ dependencies:
   - role: consul
     consul:
       name: dev_consul
-      web_port: 8500
-      dns_port: 53
-      url: consul://172.17.0.1:8500
+      ip: "{{ lookup('env','DOCKER_IP_ADDRESS') }}"
   - role: users
   - role: boundaries
   - role: web

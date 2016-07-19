@@ -1,5 +1,3 @@
 # consul:
-#   web_port: 8400
-#   dns_port: 53
-#   url: consul://consul.amazon.com:8500
+#   ip: consul.amazon.com
 #   name: consul
