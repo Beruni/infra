@@ -1,0 +1,10 @@
+- name: setup {{ httpd['name'] }} server
+  docker: 
+    name: "{{ httpd['name'] }}"
+    docker_url: "{{ docker_host_url }}"
+    hostname: "{{ httpd['name'] }}"
+    image: httpd
+    ports: "{{ httpd['port'] }}:80"
+    state: reloaded
+    volumes:
+      - "{{ playbook_dir }}/../{{ httpd['name'] }}/dist:/usr/local/apache2/htdocs/"

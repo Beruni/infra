@@ -2,10 +2,9 @@
 dependencies:
   - role: mongo
     mongo:
-      port: "{{ users['mongo_port'] }}"
       name: "users_mongo"
   - role: node_server
     node_server:
       port: "{{ users['node_server_port'] }}"
-      mongo_port: "{{ users['mongo_port'] }}"
+      mongo_name: "users_mongo"
       name: "user_service"

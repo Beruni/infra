@@ -1,7 +1,6 @@
 ---
 dependencies:
-  - role: node_server
-    node_server:
-      port: "{{ web['node_server_port'] }}"
+  - role: httpd
+    httpd:
+      port: "{{ web['server_port'] }}"
       name: "web"
-      mongo_port: 0

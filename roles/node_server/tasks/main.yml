@@ -2,10 +2,12 @@
   docker: 
     name: "{{ node_server['name'] }}"
     docker_url: "{{ docker_host_url }}"
+    hostname: "{{ node_server['name'] }}"
     image: node:{{ node_version }}
     ports: "{{ node_server['port'] }}:{{ node_server['port'] }}"
     expose: "{{ node_server['port'] }}"
+    links: "{{ node_server['mongo_name'] }}:mongo"
     state: reloaded
     volumes:
       - "{{ playbook_dir }}/../{{ node_server['name'] }}:/apps/{{ node_server['name'] }}"
-    command: "/bin/bash -c \"ls -la /apps/{{ node_server['name'] }} && cd /apps/{{ node_server['name'] }} && MONGO_HOST=172.17.0.1:{{ node_server['mongo_port'] }} npm start\""
+    command: "/bin/bash -c \"env && ls -la /apps/{{ node_server['name'] }} && cd /apps/{{ node_server['name'] }} && npm start\""
