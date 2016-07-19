@@ -14,18 +14,17 @@ then
   VBoxManage modifyvm default --natpf1 http_alt,tcp,0.0.0.0,8080,0.0.0.0,8080
 fi
 docker-machine start default
-
+temp=$(docker-machine env default | grep DOCKER_HOST)
+if [ $? -ne 0 ]
+then
+  exit
+fi
+temp=${temp//export DOCKER_HOST=\"tcp\:\/\//}
+export DOCKER_IP_ADDRESS=${temp//\:2376\"/}
 grep -q boot2docker /etc/hosts
 if [ $? -ne 0 ]
 then
-  temp=$(docker-machine env default | grep DOCKER_HOST)
-  if [ $? -ne 0 ]
-  then
-    exit
-  fi
-  temp=${temp//export DOCKER_HOST=\"tcp\:\/\//}
-  ip_address=${temp//\:2376\"/}
-  sudo -- sh -c -e "echo '${ip_address}   boot2docker' >> /etc/hosts"
+  sudo -- sh -c -e "echo '${DOCKER_IP_ADDRESS}   boot2docker' >> /etc/hosts"
 fi
 grep -q berunici /etc/hosts
 if [ $? -ne 0 ]

@@ -6,9 +6,9 @@
     state: started
     ports:
       - "{{ consul['web_port'] }}:8500"
-      - 8400:8400
-      - "{{ consul['dns_port'] }}:8600/tcp"
-      - "{{ consul['dns_port'] }}:8600/udp"
+      # - 8400:8400
+      # - "{{ consul['dns_port'] }}:8600/tcp"
+      # - "{{ consul['dns_port'] }}:8600/udp"
     command: agent -client 0.0.0.0 -server -bootstrap -ui
 - name: Pull and run registrator container
   docker:
@@ -18,4 +18,4 @@
     image: gliderlabs/registrator:latest
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock
-    command: "-ip boot2docker {{ consul['url'] }}"
+    command: "-ip {{ lookup('env','DOCKER_IP_ADDRESS') }} {{ consul['url'] }}"
