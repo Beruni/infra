@@ -2,4 +2,5 @@
 #   port: 8000
 #   name: node_server
 #   mongo_name: mongo
+#   discovery_service_host: discovery.amazon.com
 

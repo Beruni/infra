@@ -1,0 +1,5 @@
+apps:
+  discovery_service_host: "{{ lookup('env','DOCKER_IP_ADDRESS') }}"
+consul:
+  name: dev_consul
+  ip: "{{ lookup('env','DOCKER_IP_ADDRESS') }}"

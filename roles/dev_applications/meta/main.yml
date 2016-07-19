@@ -1,9 +1,6 @@
 ---
 dependencies:
   - role: consul
-    consul:
-      name: dev_consul
-      ip: "{{ lookup('env','DOCKER_IP_ADDRESS') }}"
   - role: users
   - role: boundaries
   - role: web

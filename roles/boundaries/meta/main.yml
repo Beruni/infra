@@ -8,3 +8,4 @@ dependencies:
       port: "{{ boundaries['node_server_port'] }}"
       mongo_name: "boundary_mongo"
       name: "boundary_file_service"
+      discovery_service_host: "{{ apps['discovery_service_host'] }}"

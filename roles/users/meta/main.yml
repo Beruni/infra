@@ -8,3 +8,4 @@ dependencies:
       port: "{{ users['node_server_port'] }}"
       mongo_name: "users_mongo"
       name: "user_service"
+      discovery_service_host: "{{ apps['discovery_service_host'] }}"
