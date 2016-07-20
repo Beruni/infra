@@ -1,5 +1,5 @@
 
-- git: repo=https://github.com/Strider-CD/strider.git dest=~/strider
+- git: repo=https://github.com/Strider-CD/strider.git dest=~/strider version=ae656ba1aa119de8d0c5f35962c2eb846f8a92fd depth=1
 - name : npm install
   command: "bash -lc 'cd ~/strider && npm install'"
 - template: src=files/strider.app.plist.j2 dest=~/Library/LaunchAgents/strider.app.plist force=yes
