@@ -1,7 +1,7 @@
 
 - git: repo=https://github.com/Strider-CD/strider.git dest=~/strider
 - name : npm install
-  command: "cd ~/strider && npm install"
+  command: "bash -lc 'cd ~/strider && npm install'"
 - template: src=files/strider.app.plist.j2 dest=~/Library/LaunchAgents/strider.app.plist force=yes
 - copy: src=files/server.sh dest=~/strider/server.sh force=yes mode=755
 - name: Stop strider server
