@@ -1,6 +1,8 @@
 ---
 dependencies:
+  - role: node_build
   - role: consul
   - role: users
   - role: boundaries
   - role: web
+  - role: node_server
