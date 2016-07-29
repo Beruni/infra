@@ -5,4 +5,3 @@ dependencies:
   - role: users
   - role: boundaries
   - role: web
-  - role: node_server
