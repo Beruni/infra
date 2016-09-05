@@ -3,5 +3,4 @@
   roles:
     - nodejs
     - codebase
-    - node_build
     - dev_applications
