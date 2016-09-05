@@ -5,15 +5,15 @@
     - boundary_file_service
     - web
     - user_service
+    - data_service
 
 - name: stash repo changes
   shell: "cd {{ item.stat.path }} && git stash"
   changed_when: "stash_result.stdout != 'No local changes to save'"
   register: stash_result
   with_items: "{{ presence_result.results }}"
-  when: item.stat.isdir
+  when: item.stat.exists
 
 - name: fetch git repos
-  git: repo=git@git.thoughtworks.net:beruni/{{ item.item }}.git dest={{ item.stat.path }}
+  git: repo=git@git.thoughtworks.net:beruni/{{ item.item }}.git dest={{ item.invocation.module_args.path }}
   with_items: "{{ presence_result.results }}"
-  when: item.stat.isdir

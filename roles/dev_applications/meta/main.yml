@@ -5,3 +5,4 @@ dependencies:
   - role: users
   - role: boundaries
   - role: web
+  - role: data

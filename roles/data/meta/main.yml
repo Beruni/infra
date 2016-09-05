@@ -1,0 +1,11 @@
+---
+dependencies:
+  - role: mongo
+    mongo:
+      name: "data_mongo"
+  - role: node_server
+    node_server:
+      port: "{{ data['node_server_port'] }}"
+      mongo_name: "data_mongo"
+      name: "data_service"
+      discovery_service_host: "{{ apps['discovery_service_host'] }}"
