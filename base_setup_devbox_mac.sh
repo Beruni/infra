@@ -21,10 +21,10 @@ then
 fi
 temp=${temp//export DOCKER_HOST=\"tcp\:\/\//}
 export DOCKER_IP_ADDRESS=${temp//\:2376\"/}
-grep -q boot2docker /etc/hosts
+grep -q boot2docker.local /etc/hosts
 if [ $? -ne 0 ]
 then
-  sudo -- sh -c -e "echo '${DOCKER_IP_ADDRESS}   boot2docker' >> /etc/hosts"
+  sudo -- sh -c -e "echo '${DOCKER_IP_ADDRESS}   boot2docker.local' >> /etc/hosts"
 fi
 grep -q berunici /etc/hosts
 if [ $? -ne 0 ]
