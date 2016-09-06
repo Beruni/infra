@@ -8,3 +8,4 @@
     state: reloaded
     volumes:
       - "{{ playbook_dir }}/../{{ httpd['name'] }}/dist:/usr/local/apache2/htdocs/"
+      - "{{ playbook_dir }}/../{{ httpd['name'] }}/deploy/apache2/conf:/usr/local/apache2/conf/"
