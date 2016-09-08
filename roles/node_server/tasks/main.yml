@@ -10,5 +10,8 @@
     state: reloaded
     volumes:
       - "{{ playbook_dir }}/../{{ node_server['name'] }}:/apps/{{ node_server['name'] }}"
-    command: "/bin/bash -c \"env && ls -la /apps/{{ node_server['name'] }} && cd /apps/{{ node_server['name'] }} && DISCOVERY_SERVICE_HOST={{ node_server['discovery_service_host'] }} npm start\""
-        
+    command: "/bin/bash -c \"env && ls -la /apps/{{ node_server['name'] }} && cd /apps/{{ node_server['name'] }} && npm start\""
+    env:
+      DISCOVERY_SERVICE_HOST: "{{ node_server['discovery_service_host'] }}"
+      DISCOVERY_SERVICE_PORT: 8500
+      DISCOVERY_SERVICE_PATH: /v1/catalog/service/node
