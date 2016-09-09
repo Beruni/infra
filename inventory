@@ -2,3 +2,5 @@
 localhost ansible_connection=local docker_host_url=tcp://boot2docker:2376 node_version=6.2.2
 [ci_server]
 INBeruni.local ansible_port=22 ansible_host=10.133.23.136 ansible_user=footballpools ansible_ssh_pass=!abcd1234 node_version=6.2.2
+[gitlab_ci_agent]
+localhost ansible_connection=local node_version=6.2.2

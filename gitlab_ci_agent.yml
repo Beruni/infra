@@ -1,0 +1,4 @@
+---
+  - hosts: gitlab_ci_agent
+    roles:
+      - gitlab_ci_agent

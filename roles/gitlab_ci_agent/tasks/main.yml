@@ -1,0 +1,10 @@
+- get_url: url='https://gitlab-ci-multi-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-ci-multi-runner-darwin-amd64' dest='/usr/local/bin/gitlab-ci-multi-runner' mode=755
+- expect:
+    command: gitlab-ci-multi-runner register
+    responses:
+      coordinator: https://git.thoughtworks.net/ci
+      token: g1Lji_Gso16uk9RuJWfH
+      description: ""
+      tags: beruni,build,deploy,test
+      executor: shell
+- command: gitlab-ci-multi-runner start
