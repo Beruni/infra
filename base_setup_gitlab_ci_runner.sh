@@ -5,6 +5,7 @@ brew tap caskroom/cask
 brew install docker
 brew install docker-machine
 brew install heroku-toolbelt
+heroku plugins:install heroku-container-registry
 echo "*********Going to login via SSO"
 echo "\033[0;31m*********Make sure you press an extra <enter> after the logged in message for script to continue...\033[0m"
 
