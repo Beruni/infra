@@ -3,9 +3,10 @@
     command: gitlab-ci-multi-runner register
     responses:
       coordinator: https://git.thoughtworks.net/ci
-      token: g1Lji_Gso16uk9RuJWfH
+      token: uvsasSmTgcxCeiP4pKFw
       description: ""
       tags: beruni,build,deploy,test
       executor: shell
+- command: gitlab-ci-multi-runner uninstall
 - command: gitlab-ci-multi-runner install
 - command: gitlab-ci-multi-runner start

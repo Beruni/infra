@@ -11,3 +11,8 @@ echo "\033[0;31m*********Make sure you press an extra <enter> after the logged i
 bash -c '(echo -e "thoughtworks-labs" && cat) | heroku login --sso'
 docker-machine start default
 ansible-playbook gitlab_ci_agent.yml -i inventory
+echo "\033[1;33;44mYou need to enable the new runner at ->"
+echo "https://git.thoughtworks.net/beruni/user_service/runners"
+echo "https://git.thoughtworks.net/beruni/data_service/runners"
+echo "https://git.thoughtworks.net/beruni/boundary_file_service/runners"
+echo "https://git.thoughtworks.net/beruni/web/runners\033[0m"
