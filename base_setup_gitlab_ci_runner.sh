@@ -4,5 +4,7 @@ sudo easy_install pexpect
 brew tap caskroom/cask
 brew install docker
 brew install docker-machine
+brew install heroku-toolbelt
+bash -c '(echo -e "thoughtworks-labs" && cat) | heroku login --sso'
 docker-machine start default
 ansible-playbook gitlab_ci_agent.yml -i inventory

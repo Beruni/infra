@@ -7,4 +7,5 @@
       description: ""
       tags: beruni,build,deploy,test
       executor: shell
+- command: gitlab-ci-multi-runner install
 - command: gitlab-ci-multi-runner start
